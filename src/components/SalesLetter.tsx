@@ -10,8 +10,8 @@ const SalesLetter = () => {
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative container mx-auto px-4 py-16 md:py-24">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-block mb-6 px-4 py-2 bg-brand-gold/10 border border-brand-gold/30 rounded-full">
-              <span className="text-brand-gold font-inter font-medium text-sm tracking-wider uppercase">
+            <div className="inline-block mb-6 px-4 py-2 glassmorphism-button rounded-full">
+              <span className="text-brand-dark font-inter font-medium text-sm tracking-wider uppercase">
                 Nova Era das Mentorias
               </span>
             </div>
