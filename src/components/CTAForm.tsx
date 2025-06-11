@@ -37,6 +37,35 @@ const CTAForm = () => {
     setFormData(prev => ({ ...prev, phone: formatted }));
   };
 
+  const getURLParams = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return {
+      utm_source: urlParams.get('utm_source') || '',
+      utm_medium: urlParams.get('utm_medium') || '',
+      utm_campaign: urlParams.get('utm_campaign') || '',
+      utm_term: urlParams.get('utm_term') || '',
+      utm_content: urlParams.get('utm_content') || ''
+    };
+  };
+
+  const getSaoPauloDateTime = () => {
+    const now = new Date();
+    const saoPauloTime = new Intl.DateTimeFormat('pt-BR', {
+      timeZone: 'America/Sao_Paulo',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    }).formatToParts(now);
+
+    const date = `${saoPauloTime.find(p => p.type === 'day')?.value}/${saoPauloTime.find(p => p.type === 'month')?.value}/${saoPauloTime.find(p => p.type === 'year')?.value}`;
+    const time = `${saoPauloTime.find(p => p.type === 'hour')?.value}:${saoPauloTime.find(p => p.type === 'minute')?.value}:${saoPauloTime.find(p => p.type === 'second')?.value}`;
+    
+    return { date, time };
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -51,13 +80,26 @@ const CTAForm = () => {
 
     setIsLoading(true);
 
+    const urlParams = getURLParams();
+    const { date, time } = getSaoPauloDateTime();
+
+    const webhookData = {
+      ...formData,
+      page_url: window.location.href,
+      date: date,
+      time: time,
+      ...urlParams
+    };
+
+    console.log('Dados enviados:', webhookData);
+
     try {
       const response = await fetch('https://hook.us1.make.com/mw2ou8gt87mukvq83xmovom22qtpa8yr', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(webhookData),
       });
 
       if (response.ok) {
@@ -66,7 +108,6 @@ const CTAForm = () => {
           description: "Dados enviados com sucesso. Redirecionando para o WhatsApp...",
         });
         
-        // Redirect to WhatsApp after a brief delay
         setTimeout(() => {
           window.open('https://api.whatsapp.com/send/?phone=5585986535111&text=Quero+ativar+a+Arquitetura+de+Escala&type=phone_number&app_absent=0', '_blank');
           setIsOpen(false);
@@ -98,111 +139,113 @@ const CTAForm = () => {
   ];
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
-        <Button 
-          size="lg" 
-          className="bg-brand-gold hover:bg-brand-gold/90 text-brand-dark font-inter font-bold text-lg px-12 py-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl transform hover:scale-105"
-        >
-          QUERO A ARQUITETURA DE ESCALA
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle className="font-playfair text-2xl text-brand-dark text-center">
-            Quero a Arquitetura de Escala
-          </DialogTitle>
-        </DialogHeader>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <Label htmlFor="name" className="text-brand-dark font-inter font-medium">
-              Nome completo *
-            </Label>
-            <Input
-              id="name"
-              type="text"
-              value={formData.name}
-              onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-              placeholder="Seu nome completo"
-              className="mt-1"
-              required
-            />
-          </div>
-
-          <div>
-            <Label htmlFor="phone" className="text-brand-dark font-inter font-medium">
-              Telefone *
-            </Label>
-            <Input
-              id="phone"
-              type="tel"
-              value={formData.phone}
-              onChange={handlePhoneChange}
-              placeholder="(00) 00000-0000"
-              className="mt-1"
-              maxLength={15}
-              required
-            />
-          </div>
-
-          <div>
-            <Label htmlFor="email" className="text-brand-dark font-inter font-medium">
-              E-mail *
-            </Label>
-            <Input
-              id="email"
-              type="email"
-              value={formData.email}
-              onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-              placeholder="seu@email.com"
-              className="mt-1"
-              required
-            />
-          </div>
-
-          <div>
-            <Label htmlFor="instagram" className="text-brand-dark font-inter font-medium">
-              Instagram *
-            </Label>
-            <Input
-              id="instagram"
-              type="text"
-              value={formData.instagram}
-              onChange={(e) => setFormData(prev => ({ ...prev, instagram: e.target.value }))}
-              placeholder="@seuinstagram"
-              className="mt-1"
-              required
-            />
-          </div>
-
-          <div>
-            <Label htmlFor="revenue" className="text-brand-dark font-inter font-medium">
-              Faixa de faturamento mensal *
-            </Label>
-            <Select onValueChange={(value) => setFormData(prev => ({ ...prev, revenue: value }))}>
-              <SelectTrigger className="mt-1">
-                <SelectValue placeholder="Selecione sua faixa de faturamento" />
-              </SelectTrigger>
-              <SelectContent>
-                {revenueOptions.map((option) => (
-                  <SelectItem key={option} value={option}>
-                    {option}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
+    <div className="w-full flex justify-center px-4 sm:px-6 lg:px-8">
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogTrigger asChild>
           <Button 
-            type="submit" 
-            disabled={isLoading}
-            className="w-full bg-brand-gold hover:bg-brand-gold/90 text-brand-dark font-inter font-bold mt-6"
+            size="lg" 
+            className="glassmorphism-button w-full max-w-md sm:max-w-lg text-brand-dark font-inter font-bold text-base sm:text-lg px-8 sm:px-12 py-4 sm:py-6 rounded-xl shadow-2xl transition-all duration-500 hover:shadow-3xl transform hover:scale-105 hover:-translate-y-1 border border-white/30"
           >
-            {isLoading ? 'Enviando...' : 'QUERO ACESSO AGORA'}
+            QUERO A ARQUITETURA DE ESCALA
           </Button>
-        </form>
-      </DialogContent>
-    </Dialog>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-md mx-4 max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="font-playfair text-xl sm:text-2xl text-brand-dark text-center">
+              Quero a Arquitetura de Escala
+            </DialogTitle>
+          </DialogHeader>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <Label htmlFor="name" className="text-brand-dark font-inter font-medium text-sm">
+                Nome completo *
+              </Label>
+              <Input
+                id="name"
+                type="text"
+                value={formData.name}
+                onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                placeholder="Seu nome completo"
+                className="mt-1"
+                required
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="phone" className="text-brand-dark font-inter font-medium text-sm">
+                Telefone *
+              </Label>
+              <Input
+                id="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={handlePhoneChange}
+                placeholder="(00) 00000-0000"
+                className="mt-1"
+                maxLength={15}
+                required
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="email" className="text-brand-dark font-inter font-medium text-sm">
+                E-mail *
+              </Label>
+              <Input
+                id="email"
+                type="email"
+                value={formData.email}
+                onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                placeholder="seu@email.com"
+                className="mt-1"
+                required
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="instagram" className="text-brand-dark font-inter font-medium text-sm">
+                Instagram *
+              </Label>
+              <Input
+                id="instagram"
+                type="text"
+                value={formData.instagram}
+                onChange={(e) => setFormData(prev => ({ ...prev, instagram: e.target.value }))}
+                placeholder="@seuinstagram"
+                className="mt-1"
+                required
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="revenue" className="text-brand-dark font-inter font-medium text-sm">
+                Faixa de faturamento mensal *
+              </Label>
+              <Select onValueChange={(value) => setFormData(prev => ({ ...prev, revenue: value }))}>
+                <SelectTrigger className="mt-1">
+                  <SelectValue placeholder="Selecione sua faixa de faturamento" />
+                </SelectTrigger>
+                <SelectContent>
+                  {revenueOptions.map((option) => (
+                    <SelectItem key={option} value={option}>
+                      {option}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <Button 
+              type="submit" 
+              disabled={isLoading}
+              className="w-full bg-brand-gold hover:bg-brand-gold/90 text-brand-dark font-inter font-bold mt-6 py-3"
+            >
+              {isLoading ? 'Enviando...' : 'QUERO ACESSO AGORA'}
+            </Button>
+          </form>
+        </DialogContent>
+      </Dialog>
+    </div>
   );
 };
 
