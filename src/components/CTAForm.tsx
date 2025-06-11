@@ -144,105 +144,109 @@ const CTAForm = () => {
         <DialogTrigger asChild>
           <Button 
             size="lg" 
-            className="glassmorphism-button w-full max-w-md sm:max-w-lg text-brand-dark font-inter font-bold text-base sm:text-lg px-8 sm:px-12 py-4 sm:py-6 rounded-xl shadow-2xl transition-all duration-500 hover:shadow-3xl transform hover:scale-105 hover:-translate-y-1 border border-white/30"
+            className="glassmorphism-button w-full max-w-md sm:max-w-lg text-brand-dark font-inter font-bold text-sm sm:text-base lg:text-lg xl:text-xl px-6 sm:px-8 lg:px-12 py-4 sm:py-5 lg:py-6 rounded-xl shadow-2xl transition-all duration-500 hover:shadow-3xl transform hover:scale-105 hover:-translate-y-1 border border-white/30 leading-tight"
           >
-            QUERO A ARQUITETURA DE ESCALA
+            <span className="text-center break-words">
+              QUERO A ARQUITETURA DE ESCALA
+            </span>
           </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-md mx-4 max-h-[90vh] overflow-y-auto">
+        <DialogContent className="glassmorphism-dialog sm:max-w-md mx-4 max-h-[90vh] overflow-y-auto border-none">
           <DialogHeader>
             <DialogTitle className="font-playfair text-xl sm:text-2xl text-brand-dark text-center">
               Quero a Arquitetura de Escala
             </DialogTitle>
           </DialogHeader>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <Label htmlFor="name" className="text-brand-dark font-inter font-medium text-sm">
-                Nome completo *
-              </Label>
-              <Input
-                id="name"
-                type="text"
-                value={formData.name}
-                onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                placeholder="Seu nome completo"
-                className="mt-1"
-                required
-              />
-            </div>
+          <div className="glassmorphism-form p-6 rounded-lg">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <Label htmlFor="name" className="text-brand-dark font-inter font-medium text-sm">
+                  Nome completo *
+                </Label>
+                <Input
+                  id="name"
+                  type="text"
+                  value={formData.name}
+                  onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                  placeholder="Seu nome completo"
+                  className="mt-1 glassmorphism-input"
+                  required
+                />
+              </div>
 
-            <div>
-              <Label htmlFor="phone" className="text-brand-dark font-inter font-medium text-sm">
-                Telefone *
-              </Label>
-              <Input
-                id="phone"
-                type="tel"
-                value={formData.phone}
-                onChange={handlePhoneChange}
-                placeholder="(00) 00000-0000"
-                className="mt-1"
-                maxLength={15}
-                required
-              />
-            </div>
+              <div>
+                <Label htmlFor="phone" className="text-brand-dark font-inter font-medium text-sm">
+                  Telefone *
+                </Label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handlePhoneChange}
+                  placeholder="(00) 00000-0000"
+                  className="mt-1 glassmorphism-input"
+                  maxLength={15}
+                  required
+                />
+              </div>
 
-            <div>
-              <Label htmlFor="email" className="text-brand-dark font-inter font-medium text-sm">
-                E-mail *
-              </Label>
-              <Input
-                id="email"
-                type="email"
-                value={formData.email}
-                onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                placeholder="seu@email.com"
-                className="mt-1"
-                required
-              />
-            </div>
+              <div>
+                <Label htmlFor="email" className="text-brand-dark font-inter font-medium text-sm">
+                  E-mail *
+                </Label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                  placeholder="seu@email.com"
+                  className="mt-1 glassmorphism-input"
+                  required
+                />
+              </div>
 
-            <div>
-              <Label htmlFor="instagram" className="text-brand-dark font-inter font-medium text-sm">
-                Instagram *
-              </Label>
-              <Input
-                id="instagram"
-                type="text"
-                value={formData.instagram}
-                onChange={(e) => setFormData(prev => ({ ...prev, instagram: e.target.value }))}
-                placeholder="@seuinstagram"
-                className="mt-1"
-                required
-              />
-            </div>
+              <div>
+                <Label htmlFor="instagram" className="text-brand-dark font-inter font-medium text-sm">
+                  Instagram *
+                </Label>
+                <Input
+                  id="instagram"
+                  type="text"
+                  value={formData.instagram}
+                  onChange={(e) => setFormData(prev => ({ ...prev, instagram: e.target.value }))}
+                  placeholder="@seuinstagram"
+                  className="mt-1 glassmorphism-input"
+                  required
+                />
+              </div>
 
-            <div>
-              <Label htmlFor="revenue" className="text-brand-dark font-inter font-medium text-sm">
-                Faixa de faturamento mensal *
-              </Label>
-              <Select onValueChange={(value) => setFormData(prev => ({ ...prev, revenue: value }))}>
-                <SelectTrigger className="mt-1">
-                  <SelectValue placeholder="Selecione sua faixa de faturamento" />
-                </SelectTrigger>
-                <SelectContent>
-                  {revenueOptions.map((option) => (
-                    <SelectItem key={option} value={option}>
-                      {option}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+              <div>
+                <Label htmlFor="revenue" className="text-brand-dark font-inter font-medium text-sm">
+                  Faixa de faturamento mensal *
+                </Label>
+                <Select onValueChange={(value) => setFormData(prev => ({ ...prev, revenue: value }))}>
+                  <SelectTrigger className="mt-1 glassmorphism-input">
+                    <SelectValue placeholder="Selecione sua faixa de faturamento" />
+                  </SelectTrigger>
+                  <SelectContent className="glassmorphism-select">
+                    {revenueOptions.map((option) => (
+                      <SelectItem key={option} value={option}>
+                        {option}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
 
-            <Button 
-              type="submit" 
-              disabled={isLoading}
-              className="w-full bg-brand-gold hover:bg-brand-gold/90 text-brand-dark font-inter font-bold mt-6 py-3"
-            >
-              {isLoading ? 'Enviando...' : 'QUERO ACESSO AGORA'}
-            </Button>
-          </form>
+              <Button 
+                type="submit" 
+                disabled={isLoading}
+                className="w-full glassmorphism-button text-brand-dark font-inter font-bold mt-6 py-3 text-base"
+              >
+                {isLoading ? 'Enviando...' : 'QUERO ACESSO AGORA'}
+              </Button>
+            </form>
+          </div>
         </DialogContent>
       </Dialog>
     </div>
