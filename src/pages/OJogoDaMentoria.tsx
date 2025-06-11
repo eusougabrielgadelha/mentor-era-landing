@@ -17,7 +17,7 @@ const OJogoDaMentoria = () => {
             </div>
             
             <h1 className="font-playfair text-3xl md:text-5xl lg:text-6xl font-bold text-[#2F2F2F] leading-tight mb-8">
-              Se você ainda está tentando vender<br />
+              Se você ainda está tentando vender
               sua mentoria depois que o lead entra…<br />
               <span className="text-[#5C4130]">você já perdeu o jogo.</span>
             </h1>
