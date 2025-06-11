@@ -1,4 +1,3 @@
-
 import { ArrowDown } from 'lucide-react';
 import CTAForm from './CTAForm';
 
@@ -375,6 +374,50 @@ const SalesLetter = () => {
                 Porque hoje, não é o mentor mais competente que fatura mais. É o mentor que domina a arquitetura da percepção, 
                 que tensiona o suficiente para ser visto como raro, urgente e inegociável.
               </p>
+            </div>
+          </section>
+
+          {/* Section 9: Who is Gabriel Gadelha */}
+          <section className="mb-20">
+            <div className="relative overflow-hidden bg-gradient-to-br from-brand-dark/90 via-brand-brown/90 to-brand-dark/90 rounded-2xl">
+              {/* Glassmorphism Background with Image Effect */}
+              <div 
+                className="absolute inset-0 bg-cover bg-center opacity-30"
+                style={{
+                  backgroundImage: "url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=2000&q=80')"
+                }}
+              ></div>
+              
+              <div className="relative glassmorphism-form p-8 md:p-12">
+                <div className="text-center mb-8">
+                  <h2 className="font-playfair font-bold text-3xl md:text-4xl text-white mb-6">
+                    Quem é Gabriel Gadelha?
+                  </h2>
+                  <div className="w-24 h-1 bg-brand-gold mx-auto"></div>
+                </div>
+                
+                <div className="max-w-3xl mx-auto">
+                  <div className="bg-white/10 backdrop-blur-lg rounded-xl p-8 border border-white/20 shadow-2xl">
+                    <p className="font-inter text-lg leading-relaxed mb-6 text-white">
+                      Gabriel Gadelha é estrategista digital e mentor, que já ajudou Mentores High Ticket a faturarem mais de 60 milhões de reais.
+                    </p>
+                    
+                    <p className="font-inter text-lg leading-relaxed mb-6 text-gray-200">
+                      Por muito tempo, Gabriel esteve nos bastidores de grandes palcos do Mercado High Ticket. Mas se viu obrigado a sair dos bastidores para ajudar as pessoas que estavam criando a sua mentoria mas com dificuldades de vender.
+                    </p>
+                    
+                    <div className="bg-brand-gold/20 rounded-lg p-6 border border-brand-gold/30 mb-6">
+                      <p className="font-inter text-lg leading-relaxed text-white">
+                        Gabriel Gadelha criou a Arquitetura de Escala, que ajuda Mentores High Ticket a venderem suas mentorias sem ser necessário a forçar a venda. Mas acontecendo de maneira leve e escalável.
+                      </p>
+                    </div>
+                    
+                    <p className="font-inter text-xl font-medium text-brand-gold text-center">
+                      E vou te mostrar como aplicar essa arquitetura no seu negócio.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
 
