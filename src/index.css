@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -49,6 +50,7 @@
     --brand-dark: #2F2F2F;
     --brand-brown: #5C4130;
     --brand-gold: #EABD8F;
+    --brand-light: #EAE8DB;
   }
 
   .dark {
