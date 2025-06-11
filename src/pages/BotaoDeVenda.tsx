@@ -194,12 +194,12 @@ const BotaoDeVenda = () => {
             </div>
           </section>
 
-          {/* Third CTA */}
+          {/* Third CTA
           <section className="mb-20">
             <div className="text-center">
               <CTAButton />
             </div>
-          </section>
+          </section>  */}
 
           {/* Pricing Highlight Block */}
           <section className="mb-20">
