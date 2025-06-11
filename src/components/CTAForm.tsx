@@ -1,0 +1,209 @@
+
+import React, { useState } from 'react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useToast } from '@/hooks/use-toast';
+
+const CTAForm = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    instagram: '',
+    revenue: ''
+  });
+  const { toast } = useToast();
+
+  const formatPhone = (value: string) => {
+    const numbers = value.replace(/\D/g, '');
+    if (numbers.length <= 11) {
+      return numbers.replace(/(\d{2})(\d{0,5})(\d{0,4})/, (match, p1, p2, p3) => {
+        if (p3) return `(${p1}) ${p2}-${p3}`;
+        if (p2) return `(${p1}) ${p2}`;
+        if (p1) return `(${p1}`;
+        return match;
+      });
+    }
+    return value;
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatPhone(e.target.value);
+    setFormData(prev => ({ ...prev, phone: formatted }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!formData.name || !formData.phone || !formData.email || !formData.instagram || !formData.revenue) {
+      toast({
+        title: "Erro",
+        description: "Por favor, preencha todos os campos.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('https://hook.us1.make.com/mw2ou8gt87mukvq83xmovom22qtpa8yr', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Sucesso!",
+          description: "Dados enviados com sucesso. Redirecionando para o WhatsApp...",
+        });
+        
+        // Redirect to WhatsApp after a brief delay
+        setTimeout(() => {
+          window.open('https://api.whatsapp.com/send/?phone=5585986535111&text=Quero+ativar+a+Arquitetura+de+Escala&type=phone_number&app_absent=0', '_blank');
+          setIsOpen(false);
+          setFormData({ name: '', phone: '', email: '', instagram: '', revenue: '' });
+        }, 1000);
+      } else {
+        throw new Error('Erro ao enviar dados');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      toast({
+        title: "Erro",
+        description: "Erro ao enviar dados. Tente novamente.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const revenueOptions = [
+    'Até 5k/mês',
+    'de 5k a 10k',
+    'de 10k a 20k',
+    '20k a 50k',
+    '50k a 100k',
+    '100k a 500k',
+    'acima de 500k'
+  ];
+
+  return (
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogTrigger asChild>
+        <Button 
+          size="lg" 
+          className="bg-brand-gold hover:bg-brand-gold/90 text-brand-dark font-inter font-bold text-lg px-12 py-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl transform hover:scale-105"
+        >
+          QUERO A ARQUITETURA DE ESCALA
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle className="font-playfair text-2xl text-brand-dark text-center">
+            Quero a Arquitetura de Escala
+          </DialogTitle>
+        </DialogHeader>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <Label htmlFor="name" className="text-brand-dark font-inter font-medium">
+              Nome completo *
+            </Label>
+            <Input
+              id="name"
+              type="text"
+              value={formData.name}
+              onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+              placeholder="Seu nome completo"
+              className="mt-1"
+              required
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="phone" className="text-brand-dark font-inter font-medium">
+              Telefone *
+            </Label>
+            <Input
+              id="phone"
+              type="tel"
+              value={formData.phone}
+              onChange={handlePhoneChange}
+              placeholder="(00) 00000-0000"
+              className="mt-1"
+              maxLength={15}
+              required
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="email" className="text-brand-dark font-inter font-medium">
+              E-mail *
+            </Label>
+            <Input
+              id="email"
+              type="email"
+              value={formData.email}
+              onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+              placeholder="seu@email.com"
+              className="mt-1"
+              required
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="instagram" className="text-brand-dark font-inter font-medium">
+              Instagram *
+            </Label>
+            <Input
+              id="instagram"
+              type="text"
+              value={formData.instagram}
+              onChange={(e) => setFormData(prev => ({ ...prev, instagram: e.target.value }))}
+              placeholder="@seuinstagram"
+              className="mt-1"
+              required
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="revenue" className="text-brand-dark font-inter font-medium">
+              Faixa de faturamento mensal *
+            </Label>
+            <Select onValueChange={(value) => setFormData(prev => ({ ...prev, revenue: value }))}>
+              <SelectTrigger className="mt-1">
+                <SelectValue placeholder="Selecione sua faixa de faturamento" />
+              </SelectTrigger>
+              <SelectContent>
+                {revenueOptions.map((option) => (
+                  <SelectItem key={option} value={option}>
+                    {option}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          <Button 
+            type="submit" 
+            disabled={isLoading}
+            className="w-full bg-brand-gold hover:bg-brand-gold/90 text-brand-dark font-inter font-bold mt-6"
+          >
+            {isLoading ? 'Enviando...' : 'QUERO ACESSO AGORA'}
+          </Button>
+        </form>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+export default CTAForm;

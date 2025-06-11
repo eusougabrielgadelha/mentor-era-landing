@@ -1,5 +1,6 @@
 
 import { ArrowDown } from 'lucide-react';
+import CTAForm from './CTAForm';
 
 const SalesLetter = () => {
   return (
@@ -402,12 +403,17 @@ const SalesLetter = () => {
                 onde isso começa — porque se você realmente entendeu o que está em jogo, você já sabe.
               </p>
               
-              <div className="text-center">
+              <div className="text-center mb-8">
                 <p className="font-inter text-brand-gold font-medium text-lg">
                   A ruptura final não é sobre entrar em uma nova mentoria.<br />
                   É sobre sair da sua antiga versão.<br />
                   <span className="font-bold">E isso, só você pode fazer.</span>
                 </p>
+              </div>
+
+              {/* CTA Button */}
+              <div className="pt-8 border-t border-brand-gold/30">
+                <CTAForm />
               </div>
             </div>
           </section>
