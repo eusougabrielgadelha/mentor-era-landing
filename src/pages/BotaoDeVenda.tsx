@@ -1,5 +1,5 @@
 
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, Check } from 'lucide-react';
 import CTAButton from '../components/CTAButton';
 
 const BotaoDeVenda = () => {
@@ -198,6 +198,63 @@ const BotaoDeVenda = () => {
           <section className="mb-20">
             <div className="text-center">
               <CTAButton />
+            </div>
+          </section>
+
+          {/* Pricing Highlight Block */}
+          <section className="mb-20">
+            <div className="bg-gradient-to-br from-[#EABD8F]/20 to-[#5C4130]/20 rounded-3xl p-8 md:p-12 border-2 border-[#EABD8F] text-center shadow-xl">
+              <h2 className="font-playfair font-bold text-4xl md:text-5xl text-[#2F2F2F] mb-8">
+                Botão de Vendas
+              </h2>
+              
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center justify-center gap-3">
+                  <Check className="w-6 h-6 text-[#5C4130] flex-shrink-0" />
+                  <span className="font-inter text-lg md:text-xl text-[#2F2F2F] font-medium">
+                    É uma estrutura que faz dinheiro
+                  </span>
+                </div>
+                <div className="flex items-center justify-center gap-3">
+                  <Check className="w-6 h-6 text-[#5C4130] flex-shrink-0" />
+                  <span className="font-inter text-lg md:text-xl text-[#2F2F2F] font-medium">
+                    Com o que você já tem
+                  </span>
+                </div>
+                <div className="flex items-center justify-center gap-3">
+                  <Check className="w-6 h-6 text-[#5C4130] flex-shrink-0" />
+                  <span className="font-inter text-lg md:text-xl text-[#2F2F2F] font-medium">
+                    Ainda essa semana
+                  </span>
+                </div>
+              </div>
+              
+              <div className="mb-8">
+                <div className="text-center mb-4">
+                  <span className="font-inter text-2xl text-[#5C4130] line-through opacity-70">
+                    R$ 497
+                  </span>
+                </div>
+                <div className="text-center">
+                  <span className="font-playfair font-bold text-6xl md:text-7xl text-[#2F2F2F] bg-gradient-to-r from-[#EABD8F] to-[#5C4130] bg-clip-text text-transparent">
+                    R$ 100
+                  </span>
+                </div>
+              </div>
+              
+              <div className="flex justify-center">
+                <button
+                  onClick={() => {
+                    const searchParams = new URLSearchParams(window.location.search);
+                    const baseUrl = 'https://payfast.greenn.com.br/122277/offer/u6uvMi';
+                    const finalUrl = searchParams.toString() ? `${baseUrl}?${searchParams.toString()}` : baseUrl;
+                    window.open(finalUrl, '_blank');
+                  }}
+                  className="glassmorphism-button px-8 py-4 rounded-xl font-inter font-semibold text-lg text-[#2F2F2F] transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#EABD8F]/50 shadow-xl"
+                >
+                  QUERO TER ACESSO AO BOTÃO DE VENDAS
+                </button>
+              </div>
             </div>
           </section>
 
