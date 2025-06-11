@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
+import { ArrowRight } from 'lucide-react';
 
 const CTAForm = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -144,11 +145,12 @@ const CTAForm = () => {
         <DialogTrigger asChild>
           <Button 
             size="lg" 
-            className="glassmorphism-button w-full max-w-md sm:max-w-lg text-brand-dark font-inter font-bold text-sm sm:text-base lg:text-lg xl:text-xl px-6 sm:px-8 lg:px-12 py-4 sm:py-5 lg:py-6 rounded-xl shadow-2xl transition-all duration-500 hover:shadow-3xl transform hover:scale-105 hover:-translate-y-1 border border-white/30 leading-tight"
+            className="glassmorphism-button relative w-full max-w-md sm:max-w-lg text-white font-inter font-bold text-sm sm:text-base lg:text-lg xl:text-xl px-8 sm:px-10 lg:px-14 py-5 sm:py-6 lg:py-7 shadow-2xl transition-all duration-500 hover:shadow-3xl transform hover:scale-105 hover:-translate-y-1 leading-tight flex items-center justify-center gap-3"
           >
-            <span className="text-center break-words">
-              QUERO A ARQUITETURA DE ESCALA
+            <span className="text-center break-words relative z-10">
+              SIM! QUERO ME CADASTRAR
             </span>
+            <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 relative z-10" />
           </Button>
         </DialogTrigger>
         <DialogContent className="glassmorphism-dialog sm:max-w-md mx-4 max-h-[90vh] overflow-y-auto border-none">
