@@ -1,38 +1,16 @@
-import { ArrowDown } from 'lucide-react';
-import CTAForm from './CTAForm';
+
+import HeroSection from './HeroSection';
+import TimelineSection from './TimelineSection';
+import PerceptionSection from './PerceptionSection';
+import ArchitectureSection from './ArchitectureSection';
+import AboutGabrielSection from './AboutGabrielSection';
+import FinalCTASection from './FinalCTASection';
 
 const SalesLetter = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-brand-dark via-brand-brown to-brand-dark">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative container mx-auto px-4 py-16 md:py-24">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-block mb-6 px-4 py-2 bg-brand-gold/10 border border-brand-gold/30 rounded-full">
-              <span className="text-brand-gold font-inter font-medium text-sm tracking-wider uppercase">
-                Nova Era das Mentorias
-              </span>
-            </div>
-            
-            <h1 className="font-playfair font-bold text-4xl md:text-6xl lg:text-7xl text-white mb-8 leading-tight animate-fade-in">
-              A Transformação do<br />
-              <span className="text-brand-gold">Mercado de Mentorias</span>
-            </h1>
-            
-            <p className="font-inter text-lg md:text-xl text-gray-200 mb-12 max-w-3xl mx-auto leading-relaxed">
-              O que antes funcionava por escassez de oferta hoje desmorona por excesso de mesmice. 
-              Descubra como navegar no novo cenário das mentorias.
-            </p>
-            
-            <div className="flex justify-center">
-              <ArrowDown className="w-8 h-8 text-brand-gold animate-bounce" />
-            </div>
-          </div>
-        </div>
-        
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-gold to-transparent"></div>
-      </div>
+      <HeroSection />
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-16">
@@ -86,80 +64,7 @@ const SalesLetter = () => {
           </section>
 
           {/* Section 3: Timeline */}
-          <section className="mb-20">
-            <h2 className="font-playfair font-bold text-3xl md:text-4xl text-brand-dark mb-12 text-center">
-              A Linha do Tempo da Transformação
-            </h2>
-            
-            <div className="prose prose-lg max-w-none mb-8">
-              <p className="font-inter text-gray-700 leading-relaxed mb-6 text-lg">
-                O mercado de mentorias, embora impulsionado por ondas de inovação e promessas transformadoras, percorreu 
-                uma linha do tempo previsível — até que 2025 rompeu esse padrão.
-              </p>
-            </div>
-            
-            <div className="relative">
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-brand-gold"></div>
-              
-              <div className="space-y-12">
-                <div className="relative flex items-start">
-                  <div className="absolute left-6 w-4 h-4 bg-brand-gold rounded-full border-4 border-white shadow-lg"></div>
-                  <div className="ml-16">
-                    <div className="bg-white border border-brand-gold/20 rounded-lg p-6 shadow-sm">
-                      <h3 className="font-playfair font-semibold text-xl text-brand-dark mb-2">
-                        Era da Euforia (até 2022)
-                      </h3>
-                      <p className="font-inter text-gray-700">
-                        Primeiro veio a era da euforia (até 2022), marcada pela explosão de especialistas e a venda 
-                        facilitada por um público inexperiente e faminto.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="relative flex items-start">
-                  <div className="absolute left-6 w-4 h-4 bg-brand-brown rounded-full border-4 border-white shadow-lg"></div>
-                  <div className="ml-16">
-                    <div className="bg-white border border-brand-gold/20 rounded-lg p-6 shadow-sm">
-                      <h3 className="font-playfair font-semibold text-xl text-brand-dark mb-2">
-                        Ciclo da Repetição (2023-2024)
-                      </h3>
-                      <p className="font-inter text-gray-700">
-                        Depois, o ciclo da repetição (2023–2024), onde as estratégias deixaram de ser diferenciais e se 
-                        tornaram commodities: todo mentor virou uma variação do mesmo script, operando em funis gêmeos 
-                        e posicionamentos sem alma.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="relative flex items-start">
-                  <div className="absolute left-6 w-4 h-4 bg-brand-dark rounded-full border-4 border-white shadow-lg animate-pulse-gold"></div>
-                  <div className="ml-16">
-                    <div className="bg-gradient-to-r from-brand-gold/10 to-brand-brown/10 border border-brand-gold rounded-lg p-6 shadow-md">
-                      <h3 className="font-playfair font-semibold text-xl text-brand-dark mb-2">
-                        A Ruptura de 2025
-                      </h3>
-                      <p className="font-inter text-gray-700 font-medium">
-                        Mas foi em 2025 que o mercado atingiu maturidade e, com ela, impôs seu veredito: não basta mais 
-                        aparecer — é preciso ser percebido como inevitável.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="prose prose-lg max-w-none mt-8">
-              <p className="font-inter text-gray-700 leading-relaxed mb-6 text-lg">
-                A ruptura não veio com barulho, mas com silêncio. A audiência parou de reagir. O engajamento virou 
-                indiferença. A conversão murchou. E o que parecia ser uma crise foi, na verdade, um filtro. O mercado 
-                parou de recompensar quem dominava fórmulas e começou a reverenciar quem dominava percepção. Essa é a 
-                nova régua: sofisticação invisível, autoridade implícita e tensão latente. Quem não entendeu isso em 
-                2025, já ficou para trás.
-              </p>
-            </div>
-          </section>
+          <TimelineSection />
 
           {/* Section 4: The Invisible Cycle */}
           <section className="mb-20">
@@ -208,102 +113,10 @@ const SalesLetter = () => {
           </section>
 
           {/* Section 5: Perception as Currency */}
-          <section className="mb-20">
-            <div className="text-center mb-12">
-              <h2 className="font-playfair font-bold text-3xl md:text-4xl text-brand-dark mb-6">
-                A Percepção é a Moeda Invisível
-              </h2>
-              <div className="w-24 h-1 bg-brand-gold mx-auto mb-8"></div>
-            </div>
-            
-            <div className="bg-gradient-to-br from-brand-gold/5 to-brand-brown/5 rounded-2xl p-8 md:p-12 border border-brand-gold/20">
-              <p className="font-inter text-gray-700 leading-relaxed mb-6 text-lg">
-                A percepção é a moeda invisível que decide quem prospera e quem desaparece no jogo das mentorias. Não é o 
-                conteúdo que mais educa que vende — é o conteúdo que provoca o reconhecimento simbólico imediato:
-              </p>
-              
-              <blockquote className="border-l-4 border-brand-gold pl-6 my-8">
-                <p className="font-playfair text-xl font-medium text-brand-dark italic">
-                  "essa pessoa enxerga algo que ninguém mais ousa apontar"
-                </p>
-              </blockquote>
-              
-              <p className="font-inter text-gray-700 leading-relaxed mb-6 text-lg">
-                Em um mercado saturado de vozes, frameworks e fórmulas, a percepção se torna o filtro brutal que separa 
-                os desejáveis dos descartáveis. O mentor que não domina a arquitetura da percepção está condenado a viver 
-                de "provar valor" enquanto sua autoridade se dilui na familiaridade do feed.
-              </p>
-              
-              <div className="bg-white rounded-lg p-6 border border-brand-gold/30">
-                <h3 className="font-playfair font-semibold text-xl text-brand-dark mb-4">
-                  A Verdade Que Poucos Aceitam:
-                </h3>
-                <p className="font-inter text-gray-700 leading-relaxed text-lg">
-                  E aqui está a verdade que poucos aceitam: percepção não é um detalhe — é a fundação. Sua entrega pode 
-                  transformar vidas, mas se sua presença não tensiona, ela nunca será sequer considerada. A mente humana 
-                  decide antes de entender. Ela sente, classifica, ignora ou se entrega — tudo com base em percepção. E o 
-                  mentor que ainda acredita que vai ganhar o jogo com posts didáticos está brincando de conteúdo enquanto 
-                  seus concorrentes constroem tronos invisíveis com narrativa e presença.
-                </p>
-              </div>
-            </div>
-          </section>
+          <PerceptionSection />
 
           {/* Section 6: The New Architecture */}
-          <section className="mb-20">
-            <div className="bg-gradient-to-br from-brand-dark via-brand-brown to-brand-dark rounded-2xl p-8 md:p-12 text-white">
-              <h2 className="font-playfair font-bold text-3xl md:text-4xl mb-6 text-center">
-                A Arquitetura de Escala
-              </h2>
-              
-              <div className="text-center mb-8">
-                <div className="inline-block w-24 h-1 bg-brand-gold"></div>
-              </div>
-              
-              <p className="font-inter text-lg leading-relaxed mb-6 text-gray-200">
-                A nova era das mentorias não será vencida por quem aperfeiçoa a técnica — mas por quem reconstrói a 
-                estrutura. O jogo não é mais sobre sequência, é sobre arquitetura. Arquitetura de percepção. Arquitetura 
-                de tração. Arquitetura de tensão narrativa que antecede qualquer argumento lógico.
-              </p>
-              
-              <p className="font-inter text-lg leading-relaxed mb-6 text-gray-200">
-                O mentor que vai prosperar daqui pra frente não será o mais esforçado, nem o mais presente — será o mais 
-                inevitável. Aquele cuja presença já carrega autoridade silenciosa. Aquele cujo conteúdo não apenas informa, 
-                mas desloca. Aquele que constrói um ecossistema onde cada toque, cada mensagem, cada gesto reforça a mesma 
-                coisa: você não está diante de mais um, você está diante da resposta.
-              </p>
-              
-              <div className="bg-black/20 rounded-lg p-6 border border-brand-gold/30 mb-6">
-                <p className="font-inter text-brand-gold leading-relaxed text-lg">
-                  É aqui que nasce a Arquitetura de Escala. Não como um método novo, mas como um novo código de construção. 
-                  Ela não substitui o que você faz — ela reposiciona o que você é. Cada ponto de contato, cada ativo de 
-                  conteúdo, cada fragmento da sua jornada de vendas passa a ser projetado não para parecer profissional… 
-                  mas para ser percebido como inevitável.
-                </p>
-              </div>
-              
-              <div className="grid md:grid-cols-2 gap-8 my-8">
-                <div className="bg-black/20 rounded-lg p-6 border border-brand-gold/30">
-                  <h3 className="font-playfair font-semibold text-xl text-brand-gold mb-3">Antes</h3>
-                  <p className="font-inter text-gray-300">vender para convencer, perseguir leads, aparecer mais</p>
-                </div>
-                
-                <div className="bg-brand-gold/20 rounded-lg p-6 border border-brand-gold">
-                  <h3 className="font-playfair font-semibold text-xl text-brand-gold mb-3">Agora</h3>
-                  <p className="font-inter text-gray-200">estruturar para atrair, organizar magnetismo, fazer menos com intenção brutal</p>
-                </div>
-              </div>
-              
-              <div className="text-center pt-6 border-t border-brand-gold/30">
-                <p className="font-inter text-brand-gold font-medium text-lg">
-                  É um deslocamento estratégico: você deixa de vender para convencer, e passa a estruturar para atrair. 
-                  Você deixa de perseguir leads — e passa a organizar magnetismo. Não é sobre aparecer mais. É sobre fazer 
-                  menos, com intenção brutal. Porque no novo jogo, ou você constrói uma marca com densidade simbólica… ou 
-                  será apenas mais um técnico bom com um feed bonito.
-                </p>
-              </div>
-            </div>
-          </section>
+          <ArchitectureSection />
 
           {/* Section 7: The Old Cycle Mentor */}
           <section className="mb-20">
@@ -377,96 +190,10 @@ const SalesLetter = () => {
           </section>
 
           {/* Section 9: Who is Gabriel Gadelha */}
-          <section className="mb-20">
-            <div className="relative overflow-hidden rounded-2xl">
-              {/* Background Image with Overlay */}
-              <div 
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{
-                  backgroundImage: 'url(/lovable-uploads/1a584a6e-6a92-47c3-99f7-aea2eb229eea.png)'
-                }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-dark/90 via-brand-brown/80 to-brand-dark/95"></div>
-              </div>
-              
-              {/* Content */}
-              <div className="relative glassmorphism-dialog p-8 md:p-12">
-                <div className="text-center mb-8">
-                  <h2 className="font-playfair font-bold text-3xl md:text-4xl text-white mb-6">
-                    Quem é Gabriel Gadelha?
-                  </h2>
-                  <div className="w-24 h-1 bg-brand-gold mx-auto"></div>
-                </div>
-                
-                <div className="max-w-3xl mx-auto space-y-6">
-                  <p className="font-inter text-lg leading-relaxed text-gray-200">
-                    Gabriel Gadelha é estrategista digital e mentor, que já ajudou Mentores High Ticket a faturarem mais de 60 milhões de reais.
-                  </p>
-                  
-                  <p className="font-inter text-lg leading-relaxed text-gray-200">
-                    Por muito tempo, Gabriel esteve nos bastidores de grandes palcos do Mercado High Ticket. Mas se viu obrigado a sair dos bastidores para ajudar as pessoas que estavam criando a sua mentoria mas com dificuldades de vender.
-                  </p>
-                  
-                  <p className="font-inter text-lg leading-relaxed text-gray-200">
-                    Gabriel Gadelha criou a Arquitetura de Escala, que ajuda Mentores High Ticket a venderem suas mentorias sem ser necessário a forçar a venda. Mas acontecendo de maneira leve e escalável.
-                  </p>
-                  
-                  <div className="bg-brand-gold/20 rounded-lg p-6 border border-brand-gold/30 mt-8">
-                    <p className="font-inter text-brand-gold font-medium text-lg text-center">
-                      E vou te mostrar como aplicar essa arquitetura no seu negócio.
-                    </p>
-                  </div>
-                </div>
-                
-                {/* CTA Button */}
-                <div className="pt-8 mt-8 border-t border-brand-gold/30">
-                  <div className="flex justify-center">
-                    <CTAForm />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+          <AboutGabrielSection />
 
           {/* Final Call to Action */}
-          <section className="mb-12">
-            <div className="bg-gradient-to-br from-brand-dark to-brand-brown rounded-2xl p-8 md:p-12 text-white text-center">
-              <h2 className="font-playfair font-bold text-3xl md:text-4xl mb-6">
-                A Decisão Final
-              </h2>
-              
-              <div className="w-24 h-1 bg-brand-gold mx-auto mb-8"></div>
-              
-              <p className="font-inter text-lg leading-relaxed mb-8 text-gray-200 max-w-3xl mx-auto">
-                Talvez você não precise de mais uma aula, nem de mais um script. Talvez o que te falta seja o gatilho certo 
-                para redesenhar toda a lógica do seu posicionamento.
-              </p>
-              
-              <div className="bg-black/20 rounded-lg p-6 border border-brand-gold/30 mb-8">
-                <p className="font-playfair text-xl font-medium text-brand-gold italic">
-                  "E esse redesenho não é um curso, não é um e-book, não é um PDF gratuito. É uma decisão:"
-                </p>
-              </div>
-              
-              <p className="font-inter text-lg text-gray-200 mb-8">
-                de sair do ciclo dos que seguem fórmulas e entrar no ciclo dos que constroem símbolos. Não vou te dizer 
-                onde isso começa — porque se você realmente entendeu o que está em jogo, você já sabe.
-              </p>
-              
-              <div className="text-center mb-8">
-                <p className="font-inter text-brand-gold font-medium text-lg">
-                  A ruptura final não é sobre entrar em uma nova mentoria.<br />
-                  É sobre sair da sua antiga versão.<br />
-                  <span className="font-bold">E isso, só você pode fazer.</span>
-                </p>
-              </div>
-
-              {/* CTA Button */}
-              <div className="pt-8 border-t border-brand-gold/30">
-                <CTAForm />
-              </div>
-            </div>
-          </section>
+          <FinalCTASection />
         </div>
       </div>
     </div>
