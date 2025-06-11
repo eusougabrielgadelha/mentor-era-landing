@@ -159,19 +159,19 @@ const OJogoDaMentoria = () => {
               </h3>
               <div className="space-y-4 mb-8">
                 <div className="flex items-center space-x-4">
-                  <span className="text-green-600 text-2xl">✔️</span>
+                  <span className="text-[#5C4130] text-2xl">✔️</span>
                   <p className="font-inter text-lg text-[#2F2F2F]">Aquecendo leads</p>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <span className="text-green-600 text-2xl">✔️</span>
+                  <span className="text-[#5C4130] text-2xl">✔️</span>
                   <p className="font-inter text-lg text-[#2F2F2F]">Derrubando objeções invisíveis</p>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <span className="text-green-600 text-2xl">✔️</span>
+                  <span className="text-[#5C4130] text-2xl">✔️</span>
                   <p className="font-inter text-lg text-[#2F2F2F]">Criando conexão</p>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <span className="text-green-600 text-2xl">✔️</span>
+                  <span className="text-[#5C4130] text-2xl">✔️</span>
                   <p className="font-inter text-lg text-[#2F2F2F]">E filtrando os que realmente estão prontos</p>
                 </div>
               </div>
@@ -230,27 +230,27 @@ const OJogoDaMentoria = () => {
               </p>
               <div className="space-y-4 mb-8">
                 <div className="flex items-center space-x-4">
-                  <span className="text-green-600 text-2xl">✅</span>
+                  <span className="text-[#5C4130] text-2xl">✅</span>
                   <p className="font-inter text-lg text-[#2F2F2F]">Apresenta você com autoridade e conexão</p>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <span className="text-green-600 text-2xl">✅</span>
+                  <span className="text-[#5C4130] text-2xl">✅</span>
                   <p className="font-inter text-lg text-[#2F2F2F]">Educa o lead sem parecer aula</p>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <span className="text-green-600 text-2xl">✅</span>
+                  <span className="text-[#5C4130] text-2xl">✅</span>
                   <p className="font-inter text-lg text-[#2F2F2F]">Tensiona o problema até o ponto de ação</p>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <span className="text-green-600 text-2xl">✅</span>
+                  <span className="text-[#5C4130] text-2xl">✅</span>
                   <p className="font-inter text-lg text-[#2F2F2F]">Posiciona sua mentoria como a única escolha óbvia</p>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <span className="text-green-600 text-2xl">✅</span>
+                  <span className="text-[#5C4130] text-2xl">✅</span>
                   <p className="font-inter text-lg text-[#2F2F2F]">Filtra os desqualificados</p>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <span className="text-green-600 text-2xl">✅</span>
+                  <span className="text-[#5C4130] text-2xl">✅</span>
                   <p className="font-inter text-lg text-[#2F2F2F]">E entrega pra você somente quem já está convencido</p>
                 </div>
               </div>
