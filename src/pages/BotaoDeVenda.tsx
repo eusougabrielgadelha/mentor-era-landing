@@ -17,9 +17,9 @@ const BotaoDeVenda = () => {
             </div>
             
             <h1 className="font-playfair font-bold text-4xl md:text-6xl lg:text-7xl text-white mb-8 leading-tight animate-fade-in">
-              Sua Mentoria Vendendo <span className="text-[#EABD8F]">HOJE</span>,<br />
-              Com o Botão Que Transforma<br />
-              <span className="text-[#EABD8F]">Até Suas Ideias Mais Idiotas</span><br />
+              Sua Mentoria Vendendo <span className="text-[#EABD8F]">HOJE</span>,
+              Com o Botão Que Transforma<br /
+              <span className="text-[#EABD8F]">Até Suas Ideias Mais Idiotas</span>
               em Produto Vendável
             </h1>
             
