@@ -1,7 +1,6 @@
 import CTAForm from '../components/CTAForm';
 
 const SistemaDeEscala = () => {
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#EAE8DB] to-white">
       {/* Hero Section */}
